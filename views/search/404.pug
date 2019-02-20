@@ -1,0 +1,12 @@
+extends layout.pug
+
+block results
+  div.card
+    div.card-status.bg-red
+    div.card-header
+      h3.card-title No Results
+      div.card-options: span.badge.badge-danger 404
+
+    div.card-body
+      i.fe.fe-alert-triangle.mr-2
+      | Your search - #[code=search] - did not match any results.

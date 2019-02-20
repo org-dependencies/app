@@ -1,0 +1,41 @@
+doctype html
+html
+  include ../_includes/head.pug
+
+  body
+    div.page
+      div.page-main
+        div.header.py-4
+          div.container
+            div.d-flex
+              a.header-brand(href='/home')
+                img.header-brand-img(src='https://raw.githubusercontent.com/OrgDependencies/brand/master/logo.png')
+                | Org Dependencies
+
+              div.d-flex.order-lg-2.ml-auto
+                a.btn.btn-success.btn-block(href='/auth/in') Sign in with GitHub
+
+        div.my-3.my-md-5
+          div.container
+            block header
+
+            div
+              block content
+
+      footer.footer
+        div.container
+          div.row.align-items-center.flex-row-reverse
+            div.col-auto.ml-lg-auto
+              div.row.align-items-center
+                div.col-auto
+                  ul.list-inline.list-inline-dots.mb-0
+                    li.list-inline-item: a(href='https://dependencies.org/docs' target='_blank') Documentation
+
+                div.col-auto
+                  a.btn.btn-outline-primary.btn-sm(href='https://github.com/OrgDependencies/app' target='_blank') Source code
+
+            div.col-12.col-lg-auto.mt-3.mt-lg-0.text-center
+              span!= `Copyright &copy; ${new Date().getFullYear()}&#160;`
+
+              a(href='https://dependencies.org', target='_blank') dependencies.org
+              |  All rights reserved.

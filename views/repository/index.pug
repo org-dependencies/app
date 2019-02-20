@@ -1,0 +1,20 @@
+extends layout.pug
+
+block content
+  for group in dependencies
+    div.card
+      div.card-header
+        h1.card-title= group.type
+
+      div.table-responsive
+        table.table.table-hover.table-outline.table-vcenter.text-nowrap.card-table
+          thead
+            tr
+              th.w-auto Package
+              th.text-right Version
+
+          tbody
+            each package in group.packages
+              tr
+                td.w-auto: a(href=`/${org}/dependencies/${package.name}`)= package.name
+                td.text-right= package.version

@@ -1,0 +1,49 @@
+extends layout.pug
+
+include ../mixins/pagination.pug
+
+block results
+  style.
+    .avatar-container {
+      position: relative
+    }
+
+    .avatar-initials {
+      filter: brightness(65%);
+      background-color: transparent;
+    }
+
+    .avatar-picture {
+      position: absolute;
+    }
+
+  div.card
+    div.table-responsive
+      table.table.table-hover.table-outline.table-vcenter.text-nowrap.card-table
+        thead
+          tr
+            th.w-1
+            th.w-auto Repository
+            th.text-right Activity
+
+        tbody
+          each repo in repositories
+            - const link = `/${repo.org}/repositories/${repo.name}`
+            - const language = colors[repo.language] || { color: 'lightgray', 'ext': '?' }
+
+            tr
+              td.w-1.avatar-container
+                span.avatar.avatar-picture.rounded(href=`${link}` style=`background-color: ${language.color}`)
+                  span.avatar-status(class= repo.Dependencies ? 'bg-green' : 'bg-red')
+                span.avatar.avatar-initials.rounded(style=`color: ${language.color}`)= language.ext
+
+              td
+                a(href=`${link}`)= `${repo.org}/${repo.name}`
+
+              td.text-right
+                div.small.text-muted Last Update
+                div= day(repo.updated).fromNow()
+
+    if pages > 1
+      div.card-footer.d-flex.justify-content-center
+        +pagination(pages, page, `?q=${search}&`)

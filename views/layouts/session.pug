@@ -1,0 +1,83 @@
+doctype html
+html
+  include ../_includes/head.pug
+
+  body
+    div.page
+      div.page-main
+        div.header.py-4
+          div.container
+            div.d-flex
+              a.header-brand(href='/dashboard')
+                img.header-brand-img(src='https://raw.githubusercontent.com/OrgDependencies/brand/master/logo.png')
+                | Org Dependencies
+
+              div.d-flex.order-lg-2.ml-auto
+                div.dropdown
+                  a.nav-link.pr-0.leading-none(href='#', data-toggle='dropdown', aria-expanded='false')
+                    span.avatar.rounded(style=`background-image: url(${user.avatar_url})`)
+                    span.ml-2.d-none.d-lg-block
+                      span.text-default= user.name
+                      //- small.text-muted.d-block.mt-1 Administrator
+                  div.dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
+                    //- a.dropdown-item(href='#')
+                    //-   i.dropdown-icon.fe.fe-settings
+                    //-   |  Settings
+
+                    //- div.dropdown-divider
+
+                    //- a.dropdown-item(href='#')
+                    //-   i.dropdown-icon.fe.fe-help-circle
+                    //-   |  Need help?
+
+                    a.dropdown-item(href='/auth/out')
+                      i.dropdown-icon.fe.fe-log-out
+                      |  Sign out
+
+              a.header-toggler.d-lg-none.ml-3.ml-lg-0(href='#', data-toggle='collapse', data-target='#headerMenuCollapse')
+                span.header-toggler-icon
+
+        div#headerMenuCollapse.header.collapse.d-lg-flex.p-0
+          div.container
+            div.row.align-items-center
+              div.col-lg-3.ml-auto
+                form.input-icon.my-3.my-lg-0(action='/search' method='get')
+                  input.form-control.header-search(name='q' type='search' placeholder='Search…' tabindex='1')
+                  div.input-icon-addon: i.fe.fe-search
+
+              div.col-lg.order-lg-first
+                ul.nav.nav-tabs.border-0.flex-column.flex-lg-row
+                  li.nav-item
+                    a.nav-link(href='/dashboard' class=`${path === '/dashboard' ? 'active' : null}`)
+                      i.fe.fe-home
+                      |  Home
+
+                  li.nav-item
+                    a.nav-link(href='/search' class=`${path === '/search' ? 'active' : null}`)
+                      i.fe.fe-search
+                      |  Search
+
+        div.my-3.my-md-5
+          div.container
+            block header
+
+            div
+              block content
+
+      footer.footer
+        div.container
+          div.row.align-items-center.flex-row-reverse
+            div.col-auto.ml-lg-auto
+              div.row.align-items-center
+                div.col-auto
+                  ul.list-inline.list-inline-dots.mb-0
+                    li.list-inline-item: a(href='https://dependencies.org/docs' target='_blank') Documentation
+
+                div.col-auto
+                  a.btn.btn-outline-primary.btn-sm(href='https://github.com/OrgDependencies/app' target='_blank') Source code
+
+            div.col-12.col-lg-auto.mt-3.mt-lg-0.text-center
+              span!= `Copyright &copy; ${new Date().getFullYear()}&#160;`
+
+              a(href='https://dependencies.org', target='_blank') dependencies.org
+              |  All rights reserved.

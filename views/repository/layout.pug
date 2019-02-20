@@ -1,0 +1,21 @@
+extends ../layouts/session.pug
+
+block header
+  div.page-header
+    h1.page-title
+      div.row.align-items-center
+        div.col-auto: a.avatar.avatar-md.rounded(href=`/${org}` style=`background-image: url(https://unavatar.now.sh/github/${org})`)
+        div.col-auto
+          a(href=`/${org}`)= org
+          i.fe.fe-chevron-right(style='vertical-align: middle')
+          span= name
+          if (repository && repository.private)
+            i.fe.fe-lock.ml-2
+
+    if (repository)
+      div.page-options.d-flex
+        time.small.text-muted.my-auto(data-toggle="tooltip" data-placement="left" title="Last Update" datetime= repository.updated) #[i.fe.fe-clock.mr-2] #[span= day(repository.updated).fromNow()]
+
+        div.d-flex.btn-group.ml-2
+          a.btn.btn-secondary(href=`/${org}/repositories/${name}/scan`): i.fe.fe-refresh-cw
+          a.btn.btn-secondary(href= repository.url target='_blank'): i.fe.fe-github

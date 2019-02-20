@@ -1,0 +1,33 @@
+extends layout.pug
+
+block content
+  div.card
+    div.card-status.bg-red
+    div.card-header
+      h3.card-title Not Found
+      div.card-options: span.badge.badge-danger 404
+
+    div.card-alert.alert.alert-danger.mb-0
+      i.fe.fe-alert-triangle.mr-2
+      | Repository does not exist, or is not added to Dependencies App installation
+
+    div.card-body
+      h3 How to activate repository
+      p
+        | Visit the
+        | #[a(href=`https://github.com/organizations/${installation.name}/settings/installations/${installation.id}` target='_blank') Dependencies App Installation configuration]
+        | in your org settings and enable access to this repository.
+
+      p If this repository does not exist, #[a(href=`https://github.com/organizations/${installation.name}/repositories/new` target='_blank') create it]! Dependencies App will automatically scan and add it here.
+
+      div.alert.alert-success
+        i.fe.fe-alert-triangle.mr-2
+        | #[strong Note:] you need to be an #[a(href='https://help.github.com/articles/repository-permission-levels-for-an-organization/' target='_blank'): code owner] on #[a(href=`https://github.com/${installation.name}` target='_blank'): code= installation.name]
+
+      div.alert.alert-info
+        | #[i.fe.fe-info.m2-2] read more about #[a(href='https://help.github.com/articles/installing-an-app-in-your-organization/' target='_blank') Installing an app in your organization].
+
+      hr
+
+      p Once activated, reload this page to see your repository Dependencies details.
+

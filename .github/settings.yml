@@ -1,0 +1,8 @@
+_extends: .github
+
+repository:
+  name: app
+  description: 📋 Dependencies App
+  topics: dependencies, app
+  has_issues: true
+  has_projects: true

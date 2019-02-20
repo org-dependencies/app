@@ -1,0 +1,18 @@
+extends layout.pug
+
+block results
+  if (search)
+    div.card
+      div.card-status.bg-red
+      div.card-header
+        h3.card-title Bad Search Query
+        div.card-options: span.badge.badge-danger 400
+
+      div.card-alert.alert.alert-warning.mb-0
+        i.fe.fe-alert-triangle.mr-2
+        | Search keyword should follow the query rules
+
+      div.card-body
+        h4 Query Rules
+        ul
+          li Query should be a minimum of #[code 3] characters

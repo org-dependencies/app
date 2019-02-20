@@ -1,0 +1,25 @@
+mixin pagination(pages, page, url = '?')
+  style.
+    .last ~ a:not(.last) {
+      display: none;
+    }
+
+  div.btn-group
+    a.btn.btn-secondary(href=`${url}page=1` class= page > 1 ? '' : 'disabled'): i.fe.fe-chevrons-left
+
+    - let i = 1
+    - let limit = 5
+
+    if page > 5
+      - i = page - 4
+    else
+      - limit = 10 - page
+
+    - for (i; i <= pages; i++)
+      if (page === i)
+        span.btn.btn-primary.disabled: span= i
+      else
+        a.btn.btn-secondary(href=`${url}page=${i}` class= i === (page - 1 + limit) ? 'last' : '')= i
+
+    if page !== pages
+      a.btn.btn-secondary.last(href=`${url}page=${pages}`): i.fe.fe-chevrons-right

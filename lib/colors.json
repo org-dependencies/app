@@ -1,0 +1,950 @@
+{
+  "1c enterprise": {
+    "color": "#814CCC",
+    "ext": "bsl"
+  },
+  "abap": {
+    "color": "#E8274B",
+    "ext": "abap"
+  },
+  "ags script": {
+    "color": "#B9D9FF",
+    "ext": "asc"
+  },
+  "ampl": {
+    "color": "#E6EFBB",
+    "ext": "ampl"
+  },
+  "antlr": {
+    "color": "#9DC3FF",
+    "ext": "g4"
+  },
+  "api blueprint": {
+    "color": "#2ACCA8",
+    "ext": "apib"
+  },
+  "apl": {
+    "color": "#5A8164",
+    "ext": "apl"
+  },
+  "asp": {
+    "color": "#6a40fd",
+    "ext": "asp"
+  },
+  "ats": {
+    "color": "#1ac620",
+    "ext": "dats"
+  },
+  "actionscript": {
+    "color": "#882B0F",
+    "ext": "as"
+  },
+  "ada": {
+    "color": "#02f88c",
+    "ext": "adb"
+  },
+  "agda": {
+    "color": "#315665",
+    "ext": "agda"
+  },
+  "alloy": {
+    "color": "#64C800",
+    "ext": "als"
+  },
+  "angelscript": {
+    "color": "#C7D7DC",
+    "ext": "as"
+  },
+  "applescript": {
+    "color": "#101F1F",
+    "ext": "applescript"
+  },
+  "arc": {
+    "color": "#aa2afe",
+    "ext": "arc"
+  },
+  "aspectj": {
+    "color": "#a957b0",
+    "ext": "aj"
+  },
+  "assembly": {
+    "color": "#6E4C13",
+    "ext": "asm"
+  },
+  "asymptote": {
+    "color": "#4a0c0c",
+    "ext": "asy"
+  },
+  "autohotkey": {
+    "color": "#6594b9",
+    "ext": "ahk"
+  },
+  "autoit": {
+    "color": "#1C3552",
+    "ext": "au3"
+  },
+  "ballerina": {
+    "color": "#FF5000",
+    "ext": "bal"
+  },
+  "batchfile": {
+    "color": "#C1F12E",
+    "ext": "bat"
+  },
+  "blitzmax": {
+    "color": "#cd6400",
+    "ext": "bmx"
+  },
+  "boo": {
+    "color": "#d4bec1",
+    "ext": "boo"
+  },
+  "brainfuck": {
+    "color": "#2F2530",
+    "ext": "b"
+  },
+  "c": {
+    "color": "#555555",
+    "ext": "c"
+  },
+  "c#": {
+    "color": "#178600",
+    "ext": "cs"
+  },
+  "c++": {
+    "color": "#f34b7d",
+    "ext": "cpp"
+  },
+  "css": {
+    "color": "#563d7c",
+    "ext": "css"
+  },
+  "ceylon": {
+    "color": "#dfa535",
+    "ext": "ceylon"
+  },
+  "chapel": {
+    "color": "#8dc63f",
+    "ext": "chpl"
+  },
+  "cirru": {
+    "color": "#ccccff",
+    "ext": "cirru"
+  },
+  "clarion": {
+    "color": "#db901e",
+    "ext": "clw"
+  },
+  "clean": {
+    "color": "#3F85AF",
+    "ext": "icl"
+  },
+  "click": {
+    "color": "#E4E6F3",
+    "ext": "click"
+  },
+  "clojure": {
+    "color": "#db5855",
+    "ext": "clj"
+  },
+  "coffeescript": {
+    "color": "#244776",
+    "ext": "coffee"
+  },
+  "coldfusion": {
+    "color": "#ed2cd6",
+    "ext": "cfm"
+  },
+  "common lisp": {
+    "color": "#3fb68b",
+    "ext": "lisp"
+  },
+  "common workflow language": {
+    "color": "#B5314C",
+    "ext": "cwl"
+  },
+  "component pascal": {
+    "color": "#B0CE4E",
+    "ext": "cp"
+  },
+  "crystal": {
+    "color": "#000100",
+    "ext": "cr"
+  },
+  "cuda": {
+    "color": "#3A4E3A",
+    "ext": "cu"
+  },
+  "d": {
+    "color": "#ba595e",
+    "ext": "d"
+  },
+  "dm": {
+    "color": "#447265",
+    "ext": "dm"
+  },
+  "dart": {
+    "color": "#00B4AB",
+    "ext": "dart"
+  },
+  "dataweave": {
+    "color": "#003a52",
+    "ext": "dwl"
+  },
+  "dockerfile": {
+    "color": "#384d54",
+    "ext": "🐋"
+  },
+  "dogescript": {
+    "color": "#cca760",
+    "ext": "djs"
+  },
+  "dylan": {
+    "color": "#6c616e",
+    "ext": "dylan"
+  },
+  "e": {
+    "color": "#ccce35",
+    "ext": "E"
+  },
+  "ecl": {
+    "color": "#8a1267",
+    "ext": "ecl"
+  },
+  "eq": {
+    "color": "#a78649",
+    "ext": "eq"
+  },
+  "eiffel": {
+    "color": "#946d57",
+    "ext": "e"
+  },
+  "elixir": {
+    "color": "#6e4a7e",
+    "ext": "ex"
+  },
+  "elm": {
+    "color": "#60B5CC",
+    "ext": "elm"
+  },
+  "emacs lisp": {
+    "color": "#c065db",
+    "ext": "el"
+  },
+  "emberscript": {
+    "color": "#FFF4F3",
+    "ext": "em"
+  },
+  "erlang": {
+    "color": "#B83998",
+    "ext": "erl"
+  },
+  "f#": {
+    "color": "#b845fc",
+    "ext": "fs"
+  },
+  "f*": {
+    "color": "#572e30",
+    "ext": "fst"
+  },
+  "flux": {
+    "color": "#88ccff",
+    "ext": "fx"
+  },
+  "factor": {
+    "color": "#636746",
+    "ext": "factor"
+  },
+  "fancy": {
+    "color": "#7b9db4",
+    "ext": "fy"
+  },
+  "fantom": {
+    "color": "#14253c",
+    "ext": "fan"
+  },
+  "forth": {
+    "color": "#341708",
+    "ext": "fth"
+  },
+  "fortran": {
+    "color": "#4d41b1",
+    "ext": "f90"
+  },
+  "freemarker": {
+    "color": "#0050b2",
+    "ext": "ftl"
+  },
+  "frege": {
+    "color": "#00cafe",
+    "ext": "fr"
+  },
+  "gdscript": {
+    "color": "#355570",
+    "ext": "gd"
+  },
+  "game maker language": {
+    "color": "#71b417",
+    "ext": "gml"
+  },
+  "genie": {
+    "color": "#fb855d",
+    "ext": "gs"
+  },
+  "gherkin": {
+    "color": "#5B2063",
+    "ext": "feature"
+  },
+  "glyph": {
+    "color": "#c1ac7f",
+    "ext": "glf"
+  },
+  "gnuplot": {
+    "color": "#f0a9f0",
+    "ext": "gp"
+  },
+  "go": {
+    "color": "#00ADD8",
+    "ext": "go"
+  },
+  "golo": {
+    "color": "#88562A",
+    "ext": "golo"
+  },
+  "gosu": {
+    "color": "#82937f",
+    "ext": "gs"
+  },
+  "grammatical framework": {
+    "color": "#79aa7a",
+    "ext": "gf"
+  },
+  "groovy": {
+    "color": "#e69f56",
+    "ext": "groovy"
+  },
+  "html": {
+    "color": "#e34c26",
+    "ext": "html"
+  },
+  "hack": {
+    "color": "#878787",
+    "ext": "hh"
+  },
+  "harbour": {
+    "color": "#0e60e3",
+    "ext": "hb"
+  },
+  "haskell": {
+    "color": "#5e5086",
+    "ext": "hs"
+  },
+  "haxe": {
+    "color": "#df7900",
+    "ext": "hx"
+  },
+  "hiveql": {
+    "color": "#dce200",
+    "ext": "q"
+  },
+  "hy": {
+    "color": "#7790B2",
+    "ext": "hy"
+  },
+  "idl": {
+    "color": "#a3522f",
+    "ext": "pro"
+  },
+  "idris": {
+    "color": "#b30000",
+    "ext": "idr"
+  },
+  "io": {
+    "color": "#a9188d",
+    "ext": "io"
+  },
+  "ioke": {
+    "color": "#078193",
+    "ext": "ik"
+  },
+  "isabelle": {
+    "color": "#FEFE00",
+    "ext": "thy"
+  },
+  "j": {
+    "color": "#9EEDFF",
+    "ext": "ijs"
+  },
+  "jsoniq": {
+    "color": "#40d47e",
+    "ext": "jq"
+  },
+  "java": {
+    "color": "#b07219",
+    "ext": "java"
+  },
+  "javascript": {
+    "color": "#f1e05a",
+    "ext": "js"
+  },
+  "jolie": {
+    "color": "#843179",
+    "ext": "ol"
+  },
+  "julia": {
+    "color": "#a270ba",
+    "ext": "jl"
+  },
+  "jupyter notebook": {
+    "color": "#DA5B0B",
+    "ext": "ipynb"
+  },
+  "krl": {
+    "color": "#28430A",
+    "ext": "krl"
+  },
+  "kotlin": {
+    "color": "#F18E33",
+    "ext": "kt"
+  },
+  "lfe": {
+    "color": "#4C3023",
+    "ext": "lfe"
+  },
+  "llvm": {
+    "color": "#185619",
+    "ext": "ll"
+  },
+  "lolcode": {
+    "color": "#cc9900",
+    "ext": "lol"
+  },
+  "lsl": {
+    "color": "#3d9970",
+    "ext": "lsl"
+  },
+  "lasso": {
+    "color": "#999999",
+    "ext": "lasso"
+  },
+  "lex": {
+    "color": "#DBCA00",
+    "ext": "l"
+  },
+  "livescript": {
+    "color": "#499886",
+    "ext": "ls"
+  },
+  "lookml": {
+    "color": "#652B81",
+    "ext": "lookml"
+  },
+  "lua": {
+    "color": "#000080",
+    "ext": "lua"
+  },
+  "matlab": {
+    "color": "#e16737",
+    "ext": "matlab"
+  },
+  "maxscript": {
+    "color": "#00a6a6",
+    "ext": "ms"
+  },
+  "mql4": {
+    "color": "#62A8D6",
+    "ext": "mq4"
+  },
+  "mql5": {
+    "color": "#4A76B8",
+    "ext": "mq5"
+  },
+  "mtml": {
+    "color": "#b7e1f4",
+    "ext": "mtml"
+  },
+  "makefile": {
+    "color": "#427819",
+    "ext": "mak"
+  },
+  "mask": {
+    "color": "#f97732",
+    "ext": "mask"
+  },
+  "max": {
+    "color": "#c4a79c",
+    "ext": "maxpat"
+  },
+  "mercury": {
+    "color": "#ff2b2b",
+    "ext": "m"
+  },
+  "meson": {
+    "color": "#007800",
+    "ext": "meson"
+  },
+  "metal": {
+    "color": "#8f14e9",
+    "ext": "metal"
+  },
+  "mirah": {
+    "color": "#c7a938",
+    "ext": "druby"
+  },
+  "modula-3": {
+    "color": "#223388",
+    "ext": "i3"
+  },
+  "ncl": {
+    "color": "#28431f",
+    "ext": "ncl"
+  },
+  "nearley": {
+    "color": "#990000",
+    "ext": "ne"
+  },
+  "nemerle": {
+    "color": "#3d3c6e",
+    "ext": "n"
+  },
+  "netlinx": {
+    "color": "#0aa0ff",
+    "ext": "axs"
+  },
+  "netlinx+erb": {
+    "color": "#747faa",
+    "ext": "axs.erb"
+  },
+  "netlogo": {
+    "color": "#ff6375",
+    "ext": "nlogo"
+  },
+  "newlisp": {
+    "color": "#87AED7",
+    "ext": "nl"
+  },
+  "nextflow": {
+    "color": "#3ac486",
+    "ext": "nf"
+  },
+  "nim": {
+    "color": "#37775b",
+    "ext": "nim"
+  },
+  "nit": {
+    "color": "#009917",
+    "ext": "nit"
+  },
+  "nix": {
+    "color": "#7e7eff",
+    "ext": "nix"
+  },
+  "nu": {
+    "color": "#c9df40",
+    "ext": "nu"
+  },
+  "ocaml": {
+    "color": "#3be133",
+    "ext": "ml"
+  },
+  "objective-c": {
+    "color": "#438eff",
+    "ext": "m"
+  },
+  "objective-c++": {
+    "color": "#6866fb",
+    "ext": "mm"
+  },
+  "objective-j": {
+    "color": "#ff0c5a",
+    "ext": "j"
+  },
+  "omgrofl": {
+    "color": "#cabbff",
+    "ext": "omgrofl"
+  },
+  "opal": {
+    "color": "#f7ede0",
+    "ext": "opal"
+  },
+  "oxygene": {
+    "color": "#cdd0e3",
+    "ext": "oxygene"
+  },
+  "oz": {
+    "color": "#fab738",
+    "ext": "oz"
+  },
+  "p4": {
+    "color": "#7055b5",
+    "ext": "p4"
+  },
+  "php": {
+    "color": "#4F5D95",
+    "ext": "php"
+  },
+  "plsql": {
+    "color": "#dad8d8",
+    "ext": "pls"
+  },
+  "pan": {
+    "color": "#cc0000",
+    "ext": "pan"
+  },
+  "papyrus": {
+    "color": "#6600cc",
+    "ext": "psc"
+  },
+  "parrot": {
+    "color": "#f3ca0a",
+    "ext": "parrot"
+  },
+  "pascal": {
+    "color": "#E3F171",
+    "ext": "pas"
+  },
+  "pawn": {
+    "color": "#dbb284",
+    "ext": "pwn"
+  },
+  "pep8": {
+    "color": "#C76F5B",
+    "ext": "pep"
+  },
+  "perl": {
+    "color": "#0298c3",
+    "ext": "pl"
+  },
+  "perl 6": {
+    "color": "#0000fb",
+    "ext": "6pl"
+  },
+  "piglatin": {
+    "color": "#fcd7de",
+    "ext": "pig"
+  },
+  "pike": {
+    "color": "#005390",
+    "ext": "pike"
+  },
+  "pogoscript": {
+    "color": "#d80074",
+    "ext": "pogo"
+  },
+  "postscript": {
+    "color": "#da291c",
+    "ext": "ps"
+  },
+  "powerbuilder": {
+    "color": "#8f0f8d",
+    "ext": "pbt"
+  },
+  "powershell": {
+    "color": "#012456",
+    "ext": "ps1"
+  },
+  "processing": {
+    "color": "#0096D8",
+    "ext": "pde"
+  },
+  "prolog": {
+    "color": "#74283c",
+    "ext": "pl"
+  },
+  "propeller spin": {
+    "color": "#7fa2a7",
+    "ext": "spin"
+  },
+  "puppet": {
+    "color": "#302B6D",
+    "ext": "pp"
+  },
+  "purebasic": {
+    "color": "#5a6986",
+    "ext": "pb"
+  },
+  "purescript": {
+    "color": "#1D222D",
+    "ext": "purs"
+  },
+  "python": {
+    "color": "#3572A5",
+    "ext": "py"
+  },
+  "qml": {
+    "color": "#44a51c",
+    "ext": "qml"
+  },
+  "quake": {
+    "color": "#882233",
+    "ext": "quake"
+  },
+  "r": {
+    "color": "#198CE7",
+    "ext": "r"
+  },
+  "raml": {
+    "color": "#77d9fb",
+    "ext": "raml"
+  },
+  "runoff": {
+    "color": "#665a4e",
+    "ext": "rnh"
+  },
+  "racket": {
+    "color": "#22228f",
+    "ext": "rkt"
+  },
+  "ragel": {
+    "color": "#9d5200",
+    "ext": "rl"
+  },
+  "rascal": {
+    "color": "#fffaa0",
+    "ext": "rsc"
+  },
+  "rebol": {
+    "color": "#358a5b",
+    "ext": "reb"
+  },
+  "red": {
+    "color": "#f50000",
+    "ext": "red"
+  },
+  "ren'py": {
+    "color": "#ff7f7f",
+    "ext": "rpy"
+  },
+  "ring": {
+    "color": "#2D54CB",
+    "ext": "ring"
+  },
+  "roff": {
+    "color": "#ecdebe",
+    "ext": "roff"
+  },
+  "rouge": {
+    "color": "#cc0088",
+    "ext": "rg"
+  },
+  "ruby": {
+    "color": "#701516",
+    "ext": "rb"
+  },
+  "rust": {
+    "color": "#dea584",
+    "ext": "rs"
+  },
+  "sas": {
+    "color": "#B34936",
+    "ext": "sas"
+  },
+  "sqf": {
+    "color": "#3F3F3F",
+    "ext": "sqf"
+  },
+  "srecode template": {
+    "color": "#348a34",
+    "ext": "srt"
+  },
+  "saltstack": {
+    "color": "#646464",
+    "ext": "sls"
+  },
+  "scala": {
+    "color": "#c22d40",
+    "ext": "scala"
+  },
+  "scheme": {
+    "color": "#1e4aec",
+    "ext": "scm"
+  },
+  "self": {
+    "color": "#0579aa",
+    "ext": "self"
+  },
+  "shell": {
+    "color": "#89e051",
+    "ext": "sh"
+  },
+  "shen": {
+    "color": "#120F14",
+    "ext": "shen"
+  },
+  "slash": {
+    "color": "#007eff",
+    "ext": "sl"
+  },
+  "slice": {
+    "color": "#003fa2",
+    "ext": "ice"
+  },
+  "smalltalk": {
+    "color": "#596706",
+    "ext": "st"
+  },
+  "solidity": {
+    "color": "#AA6746",
+    "ext": "solidity"
+  },
+  "sourcepawn": {
+    "color": "#5c7611",
+    "ext": "sp"
+  },
+  "squirrel": {
+    "color": "#800000",
+    "ext": "nut"
+  },
+  "stan": {
+    "color": "#b2011d",
+    "ext": "stan"
+  },
+  "standard ml": {
+    "color": "#dc566d",
+    "ext": "ML"
+  },
+  "supercollider": {
+    "color": "#46390b",
+    "ext": "sc"
+  },
+  "swift": {
+    "color": "#ffac45",
+    "ext": "swift"
+  },
+  "systemverilog": {
+    "color": "#DAE1C2",
+    "ext": "sv"
+  },
+  "ti program": {
+    "color": "#A0AA87",
+    "ext": "8xp"
+  },
+  "tcl": {
+    "color": "#e4cc98",
+    "ext": "tcl"
+  },
+  "tex": {
+    "color": "#3D6117",
+    "ext": "tex"
+  },
+  "terra": {
+    "color": "#00004c",
+    "ext": "t"
+  },
+  "turing": {
+    "color": "#cf142b",
+    "ext": "t"
+  },
+  "typescript": {
+    "color": "#2b7489",
+    "ext": "ts"
+  },
+  "unrealscript": {
+    "color": "#a54c4d",
+    "ext": "uc"
+  },
+  "vcl": {
+    "color": "#148AA8",
+    "ext": "vcl"
+  },
+  "vhdl": {
+    "color": "#adb2cb",
+    "ext": "vhdl"
+  },
+  "vala": {
+    "color": "#fbe5cd",
+    "ext": "vala"
+  },
+  "verilog": {
+    "color": "#b2b7f8",
+    "ext": "v"
+  },
+  "vim script": {
+    "color": "#199f4b",
+    "ext": "vim"
+  },
+  "visual basic": {
+    "color": "#945db7",
+    "ext": "vb"
+  },
+  "volt": {
+    "color": "#1F1F1F",
+    "ext": "volt"
+  },
+  "vue": {
+    "color": "#2c3e50",
+    "ext": "vue"
+  },
+  "webassembly": {
+    "color": "#04133b",
+    "ext": "wast"
+  },
+  "x10": {
+    "color": "#4B6BEF",
+    "ext": "x10"
+  },
+  "xc": {
+    "color": "#99DA07",
+    "ext": "xc"
+  },
+  "xquery": {
+    "color": "#5232e7",
+    "ext": "xquery"
+  },
+  "xslt": {
+    "color": "#EB8CEB",
+    "ext": "xslt"
+  },
+  "yara": {
+    "color": "#220000",
+    "ext": "yar"
+  },
+  "yasnippet": {
+    "color": "#32AB90",
+    "ext": "yasnippet"
+  },
+  "yacc": {
+    "color": "#4B6C4B",
+    "ext": "y"
+  },
+  "zephir": {
+    "color": "#118f9e",
+    "ext": "zep"
+  },
+  "zig": {
+    "color": "#ec915c",
+    "ext": "zig"
+  },
+  "ec": {
+    "color": "#913960",
+    "ext": "ec"
+  },
+  "nesc": {
+    "color": "#94B0C7",
+    "ext": "nc"
+  },
+  "ooc": {
+    "color": "#b0b77e",
+    "ext": "ooc"
+  },
+  "q": {
+    "color": "#0040cd",
+    "ext": "q"
+  },
+  "sed": {
+    "color": "#64b970",
+    "ext": "sed"
+  },
+  "wdl": {
+    "color": "#42f1f4",
+    "ext": "wdl"
+  },
+  "wisp": {
+    "color": "#7582D1",
+    "ext": "wisp"
+  },
+  "xbase": {
+    "color": "#403a40",
+    "ext": "prg"
+  }
+}

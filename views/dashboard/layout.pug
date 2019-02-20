@@ -1,0 +1,19 @@
+extends ../layouts/session.pug
+
+block header
+  div.page-header
+    h1.page-title Dashboard
+
+    div.page-options.d-flex
+      div.btn-group
+        a(href=`${process.env.GITHUB_APP_LINK}/installations/new` target='_blank').btn.btn-secondary
+          i.fe.fe-plus.mr-2
+          | Add Organization
+
+        a.btn.btn-secondary(href='/dashboard/scan' data-toggle="tooltip" data-placement="bottom" title="Scan your organizations again")
+          i.fe.fe-crosshair.mr-2
+          | Scan Account
+
+        a.btn.btn-secondary(href='/auth/refresh' data-toggle="tooltip" data-placement="bottom" title="Refresh your logged in session to discover newly installed organizations")
+          i.fe.fe-refresh-cw.mr-2
+          | Refresh Session

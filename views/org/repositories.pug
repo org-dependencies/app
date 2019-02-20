@@ -1,0 +1,64 @@
+extends layout.pug
+
+include ../mixins/pagination.pug
+
+block content
+  style.
+    .avatar-container {
+      position: relative
+    }
+
+    .avatar-initials {
+      filter: brightness(65%);
+      background-color: transparent;
+    }
+
+    .avatar-picture {
+      position: absolute;
+    }
+
+  div.card
+    div.table-responsive
+      table.table.table-hover.table-outline.table-vcenter.text-nowrap.card-table
+        thead
+          tr
+            th.w-1
+            th.w-auto Repository
+            th.text-right Activity
+            th.text-center.w-1
+
+        tbody
+          each repo in repositories
+            - const link = `/${repo.org}/repositories/${repo.name}`
+            - const language = colors[repo.language] || { color: 'lightgray', 'ext': '?' }
+
+            tr
+              td.w-1.avatar-container
+                a.avatar.avatar-picture.rounded(href=`${link}` style=`background-color: ${language.color}`)
+                a.avatar.avatar-initials.rounded(href=`${link}` style=`color: ${language.color}`)= language.ext
+
+              td
+                a(href=`${link}`)=repo.name
+
+              td.text-right
+                div.small.text-muted Last Update
+                div= day(repo.updated).fromNow()
+
+              td.text-center
+                div.item-action.dropdown
+                  a.icon(href='javascript:void(0)', data-toggle='dropdown'): i.fe.fe-more-vertical
+
+                  div.dropdown-menu.dropdown-menu-right
+                    a.dropdown-item(href=`${link}/scan`)
+                      i.dropdown-icon.fe.fe-crosshair
+                      | Scan Repository
+
+                    div.dropdown-divider
+
+                    a.dropdown-item(href=`https://github.com${link}` target='_blank')
+                      i.dropdown-icon.fe.fe-github
+                      | GitHub
+
+    if pages > 1
+      div.card-footer.d-flex.justify-content-center
+        +pagination(pages, page)

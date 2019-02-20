@@ -1,0 +1,44 @@
+extends layout.pug
+
+include ../mixins/pagination.pug
+
+block content
+  div.card
+    div.card-header
+      h1.card-title= name
+
+    div.card-header
+      h1.card-title Declared Versions
+
+    div.card-body
+      div.tags
+        each version in versions
+          div.tag #[a(href=`/${org}/dependencies/${name}/v/${version.version}`)= version.version] #[span.tag-addon= version.count]
+
+    div.card-header
+      h1.card-title Resolved Versions
+
+    div.card-body
+      p: em Coming Soon
+
+    div.card-header
+      h1.card-title Dependants
+
+    div.table-responsive
+      table.table.table-hover.table-outline.table-vcenter.text-nowrap.card-table
+        thead
+          tr
+            th.w-auto Repository
+            th.text-right Type
+            th.text-right Version
+
+        tbody
+          each dependant in dependants
+            tr
+              td: a(href=`/${org}/repositories/${dependant.repository}`)= dependant.repository
+              td.text-right= dependant.type
+              td.text-right= dependant.version
+
+    if pages > 1
+      div.card-footer.d-flex.justify-content-center
+        +pagination(pages, page)

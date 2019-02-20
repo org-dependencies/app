@@ -1,0 +1,20 @@
+extends ../layouts/session.pug
+
+block header
+  div.page-header
+    h1.page-title
+      div.row.align-items-center
+        div.col-auto
+          span Search
+
+    if (total)
+      div.page-subtitle #[i= total] repositories
+
+block content
+  div.card
+    div.card-body
+      form.input-icon.my-3.my-lg-0(action='/search' method='get')
+        input.form-control.header-search(name='q' type='search' placeholder='Search…' tabindex='1' value= search)
+        div.input-icon-addon: i.fe.fe-search
+
+  block results

@@ -1,0 +1,22 @@
+extends layout.pug
+
+include ../mixins/pagination.pug
+
+block content
+  div.card
+    div.table-responsive
+      table.table.table-hover.table-outline.table-vcenter.text-nowrap.card-table
+        thead
+          tr
+            th.w-auto Package
+            th.text-right # Dependants
+
+        tbody
+          each dependency in dependencies
+            tr
+              td: a(href=`/${org}/dependencies/${dependency.name}`)= dependency.name
+              td.text-right= dependency.count
+
+    if pages > 1
+      div.card-footer.d-flex.justify-content-center
+        +pagination(pages, page)

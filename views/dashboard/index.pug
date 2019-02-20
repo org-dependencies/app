@@ -1,0 +1,36 @@
+extends layout.pug
+
+block content
+  div.card
+    div.table-responsive
+      table.table.table-hover.table-outline.table-vcenter.text-nowrap.card-table
+        thead
+          tr
+            th.w-1
+            th.w-1 Org
+            th.w-auto Actions
+            th.w-1
+            th.w-1
+
+        tbody
+          each installation in installations
+            tr
+              td.text-center: span.avatar.rounded(style=`background-image: url(https://unavatar.now.sh/github/${installation.name})`)
+
+              td
+                span #[=installation.name] #[span.small= `(${installation.total})`]
+                div.small.text-muted Last Update: #[= day(installation.updated).fromNow()]
+
+              td
+                a.btn.btn-info.btn-sm(href=`/${installation.name}`) Overview
+                span.mr-2
+                a.btn.btn-success.btn-sm(href=`/${installation.name}/dependencies`) Dependencies
+                span.mr-2
+                a.btn.btn-primary.btn-sm(href=`/${installation.name}/repositories`) Repositories
+
+              td.text-right
+
+              td.text-center
+                div.btn-group
+                  a.btn.btn-secondary.btn-sm(href=`/${installation.name}/scan`) #[i.fe.fe-crosshair] Scan Org
+                  a.btn.btn-secondary.btn-sm(href=`https://github.com/organizations/${installation.name}/settings/installations/${installation.id}`, target='_blank') #[i.fe.fe-trash-2] Uninstall
