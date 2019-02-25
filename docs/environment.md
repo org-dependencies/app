@@ -53,7 +53,8 @@ Domain where this service lives
 
 **NOTE**: this is primarily used for the GitHub user authentication redirect, and should reflect the public facing URL & port your users will use, this is used independently from the [`DEPENDENCIES_APP_PORT`](#DEPENDENCIES_APP_PORT) value.
 
-> _e.g. `https://dependencies.my-company.com`_
+> _e.g. `https://dependencies.my-company.com`_  
+> _local development: `http://localhost:3000`_
 
 ### `DEPENDENCIES_APP_PORT`
 
