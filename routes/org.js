@@ -33,12 +33,15 @@ route.use(async function (req, res, next) {
   }
 
   req.installation = installation
+  res.locals.installation = installation
 
   next()
 })
 
 route.get('/', async function (req, res) {
-  const { rows: [ stats ] } = await db.dependency.stats(req.installation.id)
+  const stats = await db.dependency.stats(req.installation.id)
+
+  console.log(stats)
 
   const repositories = await db.dependency.repositories(req.installation.id, 10)
 
@@ -65,7 +68,7 @@ route.get('/repositories/:name', async function (req, res) {
     return res.render(`repository/404`, { name, installation: req.installation })
   }
 
-  const { rows } = await db.dependency.repository(req.installation.id, name)
+  const { rows } = await db.dependency.repository(req.installation.id, repository.id)
 
   return res.render(`repository/index`, { name, repository, dependencies: rows })
 })

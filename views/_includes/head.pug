@@ -17,5 +17,8 @@ head
     link(rel='stylesheet' href='https://unpkg.com/tabler-ui@0.0.32/dist/assets/css/tabler.css')
     script(src='https://unpkg.com/tabler-ui@0.0.32/dist/assets/js/require.min.js')
     script.
-      requirejs.config({ baseUrl: 'https://unpkg.com/tabler-ui@0.0.32/dist/' })
+      requirejs.config({
+        baseUrl: 'https://unpkg.com/tabler-ui@0.0.32/dist/',
+        paths: { chart: 'https://unpkg.com/chart.js@2.7.3/dist/Chart.min' }
+      })
     script(src='https://unpkg.com/tabler-ui@0.0.32/dist/assets/js/dashboard.js')

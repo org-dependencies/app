@@ -13,13 +13,18 @@ block content
     div.card-body
       div.tags
         each version in versions
-          div.tag #[a(href=`/${org}/dependencies/${name}/v/${version.version}`)= version.version] #[span.tag-addon= version.count]
+          if (version.type !== 'locked')
+            div.tag #[a(href=`/${org}/dependencies/${name}/v/${version.version}`)= version.version] #[span.tag-addon= version.count]
 
     div.card-header
       h1.card-title Resolved Versions
 
     div.card-body
-      p: em Coming Soon
+      div.tags
+        each version in versions
+          if (version.type === 'locked')
+            div.tag #[a(href=`/${org}/dependencies/${name}/v/${version.version}`)= version.version] #[span.tag-addon= version.count]
+
 
     div.card-header
       h1.card-title Dependants
@@ -35,7 +40,7 @@ block content
         tbody
           each dependant in dependants
             tr
-              td: a(href=`/${org}/repositories/${dependant.repository}`)= dependant.repository
+              td: a(href=`/${org}/repositories/${dependant.repo}`)= dependant.repo
               td.text-right= dependant.type
               td.text-right= dependant.version
 

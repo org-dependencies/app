@@ -28,8 +28,8 @@ block results
 
         tbody
           each repo in repositories
-            - const link = `/${repo.org}/repositories/${repo.name}`
-            - const language = colors[repo.language] || { color: 'lightgray', 'ext': '?' }
+            - const link = `/${repo.owner}/repositories/${repo.repo}`
+            - const language = repo.meta.language ? colors[repo.meta.language.toLowerCase()] || { color: 'lightgray', 'ext': '?' } : { color: 'lightgray', 'ext': '?' }
 
             tr
               td.w-1.avatar-container
@@ -38,7 +38,7 @@ block results
                 span.avatar.avatar-initials.rounded(style=`color: ${language.color}`)= language.ext
 
               td
-                a(href=`${link}`)= `${repo.org}/${repo.name}`
+                a(href=`${link}`)= `${repo.owner}/${repo.repo}`
 
               td.text-right
                 div.small.text-muted Last Update
