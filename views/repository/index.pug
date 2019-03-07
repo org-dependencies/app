@@ -4,7 +4,7 @@ block content
   for group in dependencies
     div.card
       div.card-header
-        h1.card-title= group.type
+        h1.card-title= group.path + ' ' +group.type
 
       div.table-responsive
         table.table.table-hover.table-outline.table-vcenter.text-nowrap.card-table

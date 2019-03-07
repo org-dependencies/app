@@ -1,7 +1,6 @@
 const WebhooksApi = require('@octokit/webhooks')
 const db = require('../lib/db/')
 const log = require('../lib/log')
-const install = require('../lib/install')
 const scan = require('../lib/scan/repo')
 
 const webhooks = new WebhooksApi({ secret: process.env.GITHUB_WEBHOOK_SECRET })
@@ -13,8 +12,18 @@ webhooks.on('*', ({ id, name, payload: { installation } }) => {
 
 // installation added
 webhooks.on('installation.created', ({ payload: { installation } }) => {
-  // install & scan repositories
-  install(installation)
+  const data = [
+    installation.id,
+    installation.account.login,
+    installation.account.type,
+    installation.html_url
+  ]
+
+  // add installation
+  db.installation.add(...data)
+
+  // scan org
+  scan.org(installation.id, installation.account.login, installation.account.type)
 })
 
 // installation removed
@@ -26,17 +35,16 @@ webhooks.on('installation.deleted', ({ payload: { installation } }) => {
 webhooks.on('installation_repositories.added', ({ payload: { installation, repositories_added } }) => { // eslint-disable-line camelcase
   log.info('%s:blue adding %d:cyan repositories', installation.id, repositories_added.length)
 
-  repositories_added.map(repository => {
-    db.repository.add(installation.id, repository)
-  })
+  scan.org(installation.id, installation.account.login, installation.account.type)
 })
 
 // installation updated (repos removed)
 webhooks.on('installation_repositories.removed', ({ payload: { installation, repositories_removed } }) => { // eslint-disable-line camelcase
   log.info('%s:blue removing %d:cyan repositories', installation.id, repositories_removed.length)
 
-  repositories_removed.map(repo => {
-    db.repository.remove(installation.id, repo.id)
+  repositories_removed.map(repository => {
+    db.repository.remove(installation.id, repository.id)
+    db.dependencies.removeRepo(installation.id, repository.id)
   })
 })
 
@@ -44,12 +52,15 @@ webhooks.on('repository.created', ({ payload: { installation, repository } }) =>
   log.info('%s:blue adding %s:cyan', installation.id, repository.full_name)
 
   db.repository.add(installation.id, repository)
+
+  scan.repo(installation.id, installation.account.login, installation.account.type)
 })
 
 webhooks.on('repository.deleted', ({ payload: { installation, repository } }) => {
   log.info('%s:blue removing %s:cyan', installation.id, repository.full_name)
 
   db.repository.remove(installation.id, repository.id)
+  db.dependencies.removeRepo(installation.id, repository.id)
 })
 
 webhooks.on('push', ({ payload }) => {

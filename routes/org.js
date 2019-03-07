@@ -73,11 +73,11 @@ route.get('/repositories/:name', async function (req, res) {
 route.get('/repositories/:name/scan', async function (req, res) {
   const { name } = req.params
 
-  scan.repository(req.installation.id, name)
+  scan.repo(req.installation.id, name)
 
   // TODO send to intermediary page
 
-  res.redirect(`/${req.params.org}/${name}`)
+  res.redirect(`/${req.params.org}/repositories/${name}`)
 })
 
 route.get('/dependencies', async function (req, res) {

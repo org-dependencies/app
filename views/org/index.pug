@@ -43,7 +43,7 @@ block content
           tbody
             each repository in repositories
               tr
-                td: a(href=`/${org}/repositories/${repository.name}`)= repository.name
+                td: a(href=`/${org}/repositories/${repository.repo}`)= repository.repo
                 td.text-right
                   span.text-muted= repository.count
 

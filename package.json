@@ -46,6 +46,8 @@
   "dependencies": {
     "@octokit/app": "^2.2.1",
     "@octokit/graphql": "^2.0.1",
+    "@octokit/plugin-retry": "^2.2.0",
+    "@octokit/plugin-throttling": "^2.4.0",
     "@octokit/rest": "^16.16.0",
     "@octokit/webhooks": "^5.3.3",
     "body-parser": "^1.18.3",
