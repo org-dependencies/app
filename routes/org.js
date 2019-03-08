@@ -41,8 +41,6 @@ route.use(async function (req, res, next) {
 route.get('/', async function (req, res) {
   const stats = await db.dependency.stats(req.installation.id)
 
-  console.log(stats)
-
   const repositories = await db.dependency.repositories(req.installation.id, 10)
 
   const packages = await db.dependency.packages(req.installation.id, 10)
@@ -123,7 +121,7 @@ route.get('/dependencies/:name*', async function (req, res) {
 })
 
 route.get('/scan', async function (req, res) {
-  scan.org(req.installation.id, req.installation.name, req.installation.type)
+  scan.org(req.installation.id, req.installation.name, req.user.accessToken)
 
   // TODO add intermediary page
 
