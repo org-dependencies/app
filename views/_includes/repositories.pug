@@ -1,0 +1,34 @@
+mixin repositories(repositories, expanded)
+  - var colors = require('./lib/colors.json')
+
+  table.table.card-table
+    thead
+      tr
+        if (expanded)
+          th.w-1
+
+        th.w-100 Repository
+        th.text-right Declared
+        th.text-right Resolved
+
+    tbody
+      each repository in repositories
+        - const link = `/${repository.owner}/repositories/${repository.repo}`
+        - const language = repository.meta.language ? colors[repository.meta.language.toLowerCase()] || { color: 'lightgray', 'ext': '?' } : { color: 'lightgray', 'ext': '?' }
+
+        tr
+          if (expanded)
+            td.w-1.avatar-container
+              a.avatar.avatar-picture.rounded(href=`${link}` style=`background-color: ${language.color}`)
+              a.avatar.avatar-initials.rounded(href=`${link}` style=`color: ${language.color}`)= language.ext
+
+          td
+            a(href= link)= repository.repo
+
+            if (expanded)
+              div.small.text-muted: em Last Update: #[= day(repository.updated).fromNow()]
+
+          td.text-right
+            span.text-muted= repository.declared
+          td.text-right
+            span.text-muted= repository.resolved

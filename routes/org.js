@@ -2,12 +2,11 @@ const { Router } = require('express')
 
 const db = require('../lib/db/')
 const scan = require('../lib/scan/')
-const colors = require('../lib/colors.json')
 
 const route = Router({ mergeParams: true })
 
 // pagination limit
-const limit = 10
+const limit = 50
 
 route.use(async function (req, res, next) {
   // view values
@@ -54,7 +53,7 @@ route.get('/repositories', async function (req, res) {
   const total = rows[0] ? rows[0].total : 0
   const pages = Math.ceil(total / limit)
 
-  res.render('org/repositories', { colors, repositories: rows, total, pages, page: req.query.page + 1 })
+  res.render('org/repositories', { repositories: rows, total, pages, page: req.query.page + 1 })
 })
 
 route.get('/repositories/:name', async function (req, res) {

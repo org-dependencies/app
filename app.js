@@ -64,6 +64,7 @@ app.use('/assets', express.static(join(__dirname, 'assets')))
 app.use((req, res, next) => {
   res.locals.user = req.user
   res.locals.path = req.path
+  res.locals.require = require // this is not ideal
 
   next()
 })

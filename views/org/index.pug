@@ -1,6 +1,7 @@
 extends layout.pug
 
-include ../mixins/pagination.pug
+include ../_includes/repositories.pug
+include ../_includes/packages.pug
 
 block content
   style.
@@ -42,18 +43,7 @@ block content
           div.card-options
             a.btn.btn-secondary.btn-sm(href=`/${org}/repositories`) View All
 
-        table.table.card-table
-          thead
-            tr
-              th Repository
-              th.text-right # Dependencies
-
-          tbody
-            each repository in repositories
-              tr
-                td: a(href=`/${org}/repositories/${repository.repo}`)= repository.repo
-                td.text-right
-                  span.text-muted= repository.count
+        +repositories(repositories)
 
     div.col-12.col-lg-6
       div.card
@@ -63,18 +53,8 @@ block content
           div.card-options
             a.btn.btn-secondary.btn-sm(href=`/${org}/dependencies`) View All
 
-        table.table.card-table
-          thead
-            tr
-              th Package
-              th.text-right # Dependants
+        +packages(packages)
 
-          tbody
-            each package in packages
-              tr
-                td: a(href=`/${org}/dependencies/${package.name}`)= package.name
-                td.text-right
-                  span.text-muted= package.count
   script.
     var stats = !{JSON.stringify(stats)}
 
