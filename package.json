@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "name": "@dependencies/app",
   "description": "Standarized project metadata to specify the components, constructs and authorship of software",
   "author": "Ahmad Nassri <email@ahmadnassri.com> (https://www.ahmadnassri.com)",
