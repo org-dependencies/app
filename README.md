@@ -32,14 +32,14 @@ $ dependencies
 
 ---
 > Website: [dependencies.org](https://dependencies.org) &bull; 
-> Github: [@OrgDependencies](https://github.com/OrgDependencies) &bull; 
+> Github: [@org-dependencies](https://github.com/org-dependencies) &bull; 
 > Twitter: [@OrgDependencies](https://twitter.com/OrgDependencies)
 
 [license-url]: LICENSE
-[license-image]: https://img.shields.io/github/license/OrgDependencies/app.svg?style=for-the-badge&logo=circleci
+[license-image]: https://img.shields.io/github/license/org-dependencies/app.svg?style=for-the-badge&logo=circleci
 
-[circle-url]: https://circleci.com/gh/OrgDependencies/workflows/app
-[circle-image]: https://img.shields.io/circleci/project/github/OrgDependencies/app/master.svg?style=for-the-badge&logo=circleci
+[circle-url]: https://circleci.com/gh/org-dependencies/workflows/app
+[circle-image]: https://img.shields.io/circleci/project/github/org-dependencies/app/master.svg?style=for-the-badge&logo=circleci
 
 [npm-url]: https://www.npmjs.com/package/@dependencies/app
 [npm-image]: https://img.shields.io/npm/v/@dependencies/app.svg?style=for-the-badge&logo=npm
