@@ -46,8 +46,6 @@
   "dependencies": {
     "@octokit/app": "^2.2.1",
     "@octokit/graphql": "^2.0.1",
-    "@octokit/plugin-retry": "^2.2.0",
-    "@octokit/plugin-throttling": "^2.4.0",
     "@octokit/rest": "^16.17.0",
     "@octokit/webhooks": "^5.3.3",
     "body-parser": "^1.18.3",
@@ -57,6 +55,8 @@
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "js-yaml": "^3.12.2",
+    "micromatch": "^3.1.10",
     "oh-my-log": "^5.0.1",
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
