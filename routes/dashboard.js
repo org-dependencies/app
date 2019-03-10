@@ -48,10 +48,10 @@ route.get('/scan', async function (req, res) {
     ]
 
     // add installation
-    db.installation.add(...data)
+    db.add(...data)
 
     // scan org
-    scan(installation.id, installation.account.login, installation.account.type)
+    scan(installation.id, installation.account.login, installation.account.type === 'User' ? req.user.accessToken : null)
   }
 
   res.redirect('/dashboard')

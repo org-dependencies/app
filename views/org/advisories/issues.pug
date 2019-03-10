@@ -1,0 +1,45 @@
+extends ../layout.pug
+
+mixin severity (sev)
+  if sev === 'low'
+    span.badge.badge-default= sev
+  else if sev === 'moderate'
+    span.badge.badge-warning= sev
+  else if sev === 'high'
+    span.badge.badge-danger= sev
+  else if sev === 'critical'
+    span.badge.badge-dark= sev
+
+block content
+  div.alert.alert-danger #[= repositories.length] Repositories are vulnerable
+
+  each repository in repositories
+    div.card
+      div.card-header
+        h3.card-title
+          a(href= `/${repository.owner}/repositories/${repository.repo}`)= repository.repo
+
+        div.card-options
+          span.tag.tag-red #[strong= issues[repository.id].length]
+
+      div.table-responsive
+        table.table.card-table.table-striped.table-vcenter
+          thead
+            tr
+              th.w-1 #
+              th.w-9 CWE
+              th.w-9 Severity
+              th.w-auto Package
+              th.text-right Versions
+
+          tbody
+            each issue in issues[repository.id]
+              tr
+                td #[a(href= issue.url target='_blank')= issue.id]
+                td= issue.cwe
+                td #[+severity(issue.severity)]
+                td #[code= issue.package]
+                td.text-right= issue.versions
+
+              tr
+                td(colspan=5)= issue.overview

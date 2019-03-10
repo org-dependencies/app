@@ -2,6 +2,7 @@ const { Router } = require('express')
 
 const db = require('../lib/db/')
 const scan = require('../lib/scan/')
+const semver = require('semver')
 
 const route = Router({ mergeParams: true })
 
@@ -38,11 +39,13 @@ route.use(async function (req, res, next) {
 })
 
 route.get('/', async function (req, res) {
-  const stats = await db.dependency.stats(req.installation.id)
+  const installation = req.installation.id
 
-  const repositories = await db.dependency.repositories(req.installation.id, 10)
+  const stats = await db.dependency.stats(installation)
 
-  const packages = await db.dependency.packages(req.installation.id, 10)
+  const repositories = await db.dependency.repositories(installation, 10)
+
+  const packages = await db.dependency.packages(installation, 10)
 
   res.render('org/index', { stats, repositories: repositories.rows, packages: packages.rows })
 })
@@ -121,6 +124,57 @@ route.get('/dependencies/:name*', async function (req, res) {
 
 route.get('/scan', async function (req, res) {
   scan.org(req.installation.id, req.installation.name, req.user.accessToken)
+
+  // TODO add intermediary page
+
+  res.redirect(`/${req.params.org}`)
+})
+
+route.get('/advisories', async function (req, res) {
+  const advisories = await db.advisories.list('npm')
+  const packages = await db.dependency.listByManager(req.installation.id, 'npm')
+
+  const issues = {}
+  const vulns = {}
+
+  // construct object for easy access
+  for (const advisory of advisories.rows) {
+    vulns[advisory.package] = vulns[advisory.package] || { reports: [] }
+
+    vulns[advisory.package].reports.push(advisory)
+  }
+
+  // inspect pacakges
+  for (const pkg of packages.rows) {
+    if (!vulns[pkg.name]) continue
+
+    for (const report of vulns[pkg.name].reports) {
+      try {
+        if (semver.intersects(pkg.version, report.versions)) {
+          issues[pkg.repository] = issues[pkg.repository] || []
+          issues[pkg.repository].push(report)
+        }
+      } catch (err) {
+        // console.log(pkg)
+        // TODO: inspect further
+      }
+    }
+  }
+
+  const ids = Object.keys(issues)
+
+  if (ids.length === 0) {
+    return res.render(`org/advisories/safe`)
+  }
+
+  // fetch affected repos
+  const repositories = await db.repository.listByIds(ids)
+
+  return res.render(`org/advisories/issues`, { repositories: repositories.rows, issues })
+})
+
+route.get('/advisories/scan', async function (req, res) {
+  scan.advisories()
 
   // TODO add intermediary page
 

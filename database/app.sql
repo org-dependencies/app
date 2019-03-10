@@ -38,6 +38,24 @@ CREATE TABLE dependencies
     PRIMARY KEY(installation, repository, path, type)
 );
 
+-- advisories
+
+CREATE TABLE advisories
+(
+    id VARCHAR NOT NULL,
+    manager VARCHAR NOT NULL,
+    package VARCHAR NOT NULL,
+    severity VARCHAR NOT NULL,
+    cwe VARCHAR NOT NULL,
+    versions VARCHAR NOT NULL,
+    overview VARCHAR NOT NULL,
+    recommendation VARCHAR NOT NULL,
+    url VARCHAR NOT NULL,
+    created TIMESTAMP NOT NULL,
+    updated TIMESTAMP NOT NULL,
+    PRIMARY KEY(id, manager)
+);
+
 -- trigger to update timestamps
 
 CREATE FUNCTION updated()
@@ -49,10 +67,6 @@ BEGIN
   RETURN NEW;
 END;
 $BODY$;
-
-CREATE TRIGGER set_timestamp BEFORE UPDATE
-ON installations
-FOR EACH ROW EXECUTE PROCEDURE updated();
 
 CREATE TRIGGER set_timestamp BEFORE UPDATE
 ON repositories
