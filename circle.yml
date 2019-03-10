@@ -1,64 +1,24 @@
 version: 2.1
 
-executors:
-  builder:
-    docker:
-      - image: ahmadnassri/build-essential
-
-  node-10:
-    docker:
-      - image: node:10-slim
-
-commands:
-  persist:
-    steps:
-      - persist_to_workspace:
-          root: .
-          paths: .
-
-  attach:
-    steps:
-      - attach_workspace:
-          at: .
-
-  install:
-    steps:
-      - run:
-          name: Install dependencies
-          command: npm ci
-
-jobs:
-  build:
-    executor: builder
-    steps:
-      - checkout
-      - install
-      - persist
-
-  lint:
-    executor: builder
-    steps:
-      - attach
-      - run: npm run lint
-
-  release:
-    executor: builder
-    steps:
-      - attach
-      - run: npx semantic-release
+orbs:
+  base: ahmadnassri/base@1.3.3
+  node: ahmadnassri/node@1.3.3
 
 workflows:
   version: 2
-  main:
+  default:
     jobs:
-      - build
+      - base/clone
 
-      - lint:
-          requires: [ build ]
+      - node/install:
+          requires: [ base/clone ]
 
-      - release:
+      - node/lint:
+          requires: [ base/clone ]
+
+      - node/release:
           context: semantic-release
-          requires: [ build, lint ]
+          requires: [ node/lint ]
           filters:
             branches:
               only: master
