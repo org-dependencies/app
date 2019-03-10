@@ -1,6 +1,7 @@
 extends layout.pug
 
-include ../mixins/pagination.pug
+include ../_includes/repositories.pug
+include ../_includes/packages.pug
 
 block content
   style.
@@ -18,12 +19,20 @@ block content
     }
 
   div.row.row-cards
-    each name in Object.keys(stats)
-      div.col-6.col-sm-4.col-lg-2
-        div.card
-          div.card-body.p-3.text-center
-            div.h1.m-0= stats[name]
-            div.text-muted= name
+    div.col-4
+      div.card
+        div.card-body
+          canvas#managers
+
+    div.col-4
+      div.card
+        div.card-body
+          canvas#modes
+
+    div.col-4
+      div.card
+        div.card-body
+          canvas#types
 
   div.row
     div.col-12.col-lg-6
@@ -34,18 +43,7 @@ block content
           div.card-options
             a.btn.btn-secondary.btn-sm(href=`/${org}/repositories`) View All
 
-        table.table.card-table
-          thead
-            tr
-              th Repository
-              th.text-right # Dependencies
-
-          tbody
-            each repository in repositories
-              tr
-                td: a(href=`/${org}/repositories/${repository.name}`)= repository.name
-                td.text-right
-                  span.text-muted= repository.count
+        +repositories(repositories)
 
     div.col-12.col-lg-6
       div.card
@@ -55,15 +53,74 @@ block content
           div.card-options
             a.btn.btn-secondary.btn-sm(href=`/${org}/dependencies`) View All
 
-        table.table.card-table
-          thead
-            tr
-              th Package
-              th.text-right # Dependants
+        +packages(packages)
 
-          tbody
-            each package in packages
-              tr
-                td: a(href=`/${org}/dependencies/${package.name}`)= package.name
-                td.text-right
-                  span.text-muted= package.count
+  script.
+    var stats = !{JSON.stringify(stats)}
+
+    require(['chart', 'jquery'], function(Chart, $) {
+      $(document).ready(function () {
+        new Chart(document.getElementById('managers'), {
+          type: 'bar',
+          data: {
+            labels: stats.managers.map(item => item.name),
+            datasets: [{
+              label: '# of packages',
+              data: stats.managers.map(item => item.count),
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true
+                }
+              }]
+            }
+          }
+        })
+
+        new Chart(document.getElementById('modes'), {
+          type: 'bar',
+          data: {
+            labels: stats.modes.npm.map(item => item.name),
+            datasets: [{
+              label: '# of packages',
+              data: stats.modes.npm.map(item => item.count),
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true
+                }
+              }]
+            }
+          }
+        })
+
+        new Chart(document.getElementById('types'), {
+          type: 'pie',
+          data: {
+            labels: stats.types.npm.map(item => item.name),
+            datasets: [{
+              label: '# of packages',
+              data: stats.types.npm.map(item => item.count),
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true
+                }
+              }]
+            }
+          }
+        })
+      })
+    })

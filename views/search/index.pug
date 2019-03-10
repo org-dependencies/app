@@ -1,6 +1,8 @@
 extends layout.pug
 
 include ../mixins/pagination.pug
+include ../_includes/repositories.pug
+include ../_includes/packages.pug
 
 block results
   style.
@@ -17,33 +19,28 @@ block results
       position: absolute;
     }
 
-  div.card
-    div.table-responsive
-      table.table.table-hover.table-outline.table-vcenter.text-nowrap.card-table
-        thead
-          tr
-            th.w-1
-            th.w-auto Repository
-            th.text-right Activity
+  if (packages.length)
+    div.card
+      div.card-header
+        h4.card-title #[= packages[0].total] Packages Found
 
-        tbody
-          each repo in repositories
-            - const link = `/${repo.org}/repositories/${repo.name}`
-            - const language = colors[repo.language] || { color: 'lightgray', 'ext': '?' }
+        div.card-options
+          a.btn.btn-secondary.btn-sm(href=`/search/packages/?q=${search}`) View All
 
-            tr
-              td.w-1.avatar-container
-                span.avatar.avatar-picture.rounded(href=`${link}` style=`background-color: ${language.color}`)
-                  span.avatar-status(class= repo.Dependencies ? 'bg-green' : 'bg-red')
-                span.avatar.avatar-initials.rounded(style=`color: ${language.color}`)= language.ext
+      div.table-responsive
+        +packages(packages, true)
 
-              td
-                a(href=`${link}`)= `${repo.org}/${repo.name}`
+  if (repositories.length)
+    div.card
+      div.card-header
+        h4.card-title #[= repositories[0].total] Repositories Found
 
-              td.text-right
-                div.small.text-muted Last Update
-                div= day(repo.updated).fromNow()
+        div.card-options
+          a.btn.btn-secondary.btn-sm(href=`/search/repositories/?q=${search}`) View All
 
-    if pages > 1
-      div.card-footer.d-flex.justify-content-center
-        +pagination(pages, page, `?q=${search}&`)
+      div.table-responsive
+        +repositories(repositories, true)
+
+    //- if pages > 1
+    //-   div.card-footer.d-flex.justify-content-center
+    //-     +pagination(pages, page, `?q=${search}&`)

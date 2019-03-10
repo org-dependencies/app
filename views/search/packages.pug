@@ -1,9 +1,9 @@
 extends layout.pug
 
 include ../mixins/pagination.pug
-include ../_includes/repositories.pug
+include ../_includes/packages.pug
 
-block content
+block results
   style.
     .avatar-container {
       position: relative
@@ -19,9 +19,12 @@ block content
     }
 
   div.card
+    div.card-header
+      h4.card-title #[= total] Packages Found
+
     div.table-responsive
-      +repositories(repositories, true)
+      +packages(packages, true)
 
     if pages > 1
       div.card-footer.d-flex.justify-content-center
-        +pagination(pages, page)
+        +pagination(pages, page, `?q=${search}&`)

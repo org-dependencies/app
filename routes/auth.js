@@ -1,6 +1,6 @@
 const express = require('express')
 
-const api = require('../lib/github/api')
+const client = require('../lib/github')
 const passport = require('../lib/passport')
 
 const route = express.Router()
@@ -18,10 +18,10 @@ route.get('/refresh', async function dashboard (req, res) {
   // exit early
   if (!req.user) return res.redirect('/home')
 
-  const octokit = await api.user(req.user.accessToken)
+  const github = await client.user(req.user.accessToken)
 
   // fetch installations for this user
-  const { data: { installations } } = await octokit.apps.listInstallationsForAuthenticatedUser() // TODO paginate
+  const { data: { installations } } = await github.apps.listInstallationsForAuthenticatedUser() // TODO paginate
 
   // update user session
   req.session.passport.user.installations = installations

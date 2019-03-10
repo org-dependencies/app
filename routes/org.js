@@ -2,12 +2,11 @@ const { Router } = require('express')
 
 const db = require('../lib/db/')
 const scan = require('../lib/scan/')
-const colors = require('../lib/colors.json')
 
 const route = Router({ mergeParams: true })
 
 // pagination limit
-const limit = 10
+const limit = 50
 
 route.use(async function (req, res, next) {
   // view values
@@ -33,12 +32,13 @@ route.use(async function (req, res, next) {
   }
 
   req.installation = installation
+  res.locals.installation = installation
 
   next()
 })
 
 route.get('/', async function (req, res) {
-  const { rows: [ stats ] } = await db.dependency.stats(req.installation.id)
+  const stats = await db.dependency.stats(req.installation.id)
 
   const repositories = await db.dependency.repositories(req.installation.id, 10)
 
@@ -53,7 +53,7 @@ route.get('/repositories', async function (req, res) {
   const total = rows[0] ? rows[0].total : 0
   const pages = Math.ceil(total / limit)
 
-  res.render('org/repositories', { colors, repositories: rows, total, pages, page: req.query.page + 1 })
+  res.render('org/repositories', { repositories: rows, total, pages, page: req.query.page + 1 })
 })
 
 route.get('/repositories/:name', async function (req, res) {
@@ -65,7 +65,7 @@ route.get('/repositories/:name', async function (req, res) {
     return res.render(`repository/404`, { name, installation: req.installation })
   }
 
-  const { rows } = await db.dependency.repository(req.installation.id, name)
+  const { rows } = await db.dependency.repository(req.installation.id, repository.id)
 
   return res.render(`repository/index`, { name, repository, dependencies: rows })
 })
@@ -73,11 +73,11 @@ route.get('/repositories/:name', async function (req, res) {
 route.get('/repositories/:name/scan', async function (req, res) {
   const { name } = req.params
 
-  scan.repository(req.installation.id, name)
+  scan.repo(req.installation.id, name)
 
   // TODO send to intermediary page
 
-  res.redirect(`/${req.params.org}/${name}`)
+  res.redirect(`/${req.params.org}/repositories/${name}`)
 })
 
 route.get('/dependencies', async function (req, res) {
@@ -120,7 +120,7 @@ route.get('/dependencies/:name*', async function (req, res) {
 })
 
 route.get('/scan', async function (req, res) {
-  scan.org(req.installation.id, req.installation.name, req.installation.type)
+  scan.org(req.installation.id, req.installation.name, req.user.accessToken)
 
   // TODO add intermediary page
 

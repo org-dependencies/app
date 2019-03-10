@@ -1,0 +1,25 @@
+mixin packages(packages)
+  table.table.card-table
+    thead
+      tr
+        th.w-100 Package
+        th.text-right Resolved
+        th.text-right Declared
+        th.text-right Dependants
+
+    tbody
+      each package in packages
+        tr
+          td
+            if package.org
+              div.text-muted= package.org
+            a(href=`/${package.org || org}/dependencies/${package.name}`)= package.name
+
+          td.text-right
+            span.text-muted= package.resolved
+
+          td.text-right
+            span.text-muted= package.declared
+
+          td.text-right
+            span.text-muted= package.dependants

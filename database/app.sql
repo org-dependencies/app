@@ -1,49 +1,63 @@
--- trigger to update timestamp
-CREATE OR REPLACE FUNCTION trigger_set_timestamp()
-RETURNS TRIGGER AS $$
+-- installations table
+
+CREATE TABLE installations
+(
+  id VARCHAR PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  type VARCHAR NOT NULL,
+  url VARCHAR NOT NULL,
+  installed TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+-- repositories table
+CREATE TABLE repositories
+(
+  id VARCHAR PRIMARY KEY,
+  installation VARCHAR NOT NULL,
+  owner VARCHAR NOT NULL,
+  repo VARCHAR NOT NULL,
+  meta JSONB NOT NULL,
+  updated TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+-- dependencies
+
+CREATE TYPE MODE AS ENUM ('declared', 'resolved');
+
+CREATE TABLE dependencies
+(
+    installation VARCHAR NOT NULL,
+    repository VARCHAR NOT NULL,
+    path VARCHAR NOT NULL,
+    type VARCHAR NOT NULL,
+    manager VARCHAR NOT NULL,
+    mode MODE default 'declared',
+    source TEXT NOT NULL,
+    packages JSONB,
+    updated TIMESTAMP NOT NULL DEFAULT NOW(),
+    PRIMARY KEY(installation, repository, path, type)
+);
+
+-- trigger to update timestamps
+
+CREATE FUNCTION updated()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+AS $BODY$
 BEGIN
   NEW.updated = NOW();
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$BODY$;
 
--- repositories table
-CREATE TABLE IF NOT EXISTS repositories (id VARCHAR PRIMARY KEY);
+CREATE TRIGGER set_timestamp BEFORE UPDATE
+ON installations
+FOR EACH ROW EXECUTE PROCEDURE updated();
 
-ALTER TABLE repositories ADD COLUMN IF NOT EXISTS installation VARCHAR;
-ALTER TABLE repositories ADD COLUMN IF NOT EXISTS org VARCHAR;
-ALTER TABLE repositories ADD COLUMN IF NOT EXISTS name VARCHAR;
-ALTER TABLE repositories ADD COLUMN IF NOT EXISTS url VARCHAR;
-ALTER TABLE repositories ADD COLUMN IF NOT EXISTS language VARCHAR;
-ALTER TABLE repositories ADD COLUMN IF NOT EXISTS private BOOL NOT NULL DEFAULT TRUE;
-ALTER TABLE repositories ADD COLUMN IF NOT EXISTS updated TIMESTAMP NOT NULL DEFAULT NOW();
+CREATE TRIGGER set_timestamp BEFORE UPDATE
+ON repositories
+FOR EACH ROW EXECUTE PROCEDURE updated();
 
-CREATE TABLE IF NOT EXISTS dependencies (
-  installation VARCHAR,
-  org VARCHAR,
-  repository VARCHAR,
-  type VARCHAR,
-  PRIMARY KEY(installation, org, repository, type)
-);
-
-ALTER TABLE dependencies ADD COLUMN IF NOT EXISTS content TEXT;
-ALTER TABLE dependencies ADD COLUMN IF NOT EXISTS packages JSONB;
-ALTER TABLE dependencies ADD COLUMN IF NOT EXISTS updated TIMESTAMP NOT NULL DEFAULT NOW();
-
--- trigger to automatically update timestamp
-DROP TRIGGER IF EXISTS set_timestamp ON repositories;
-DROP TRIGGER IF EXISTS set_timestamp ON dependencies;
-
-CREATE TRIGGER set_timestamp BEFORE UPDATE ON repositories
-FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();
-
-CREATE TRIGGER set_timestamp BEFORE UPDATE ON dependencies
-FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();
-
--- installations table
-CREATE TABLE installations (id VARCHAR PRIMARY KEY);
-ALTER TABLE installations ADD COLUMN IF NOT EXISTS name VARCHAR;
-ALTER TABLE installations ADD COLUMN IF NOT EXISTS type VARCHAR;
-ALTER TABLE installations ADD COLUMN IF NOT EXISTS url VARCHAR;
-ALTER TABLE installations ADD COLUMN IF NOT EXISTS installed TIMESTAMP NOT NULL DEFAULT NOW();
-
+CREATE TRIGGER set_timestamp BEFORE UPDATE
+ON dependencies
+FOR EACH ROW EXECUTE PROCEDURE updated();

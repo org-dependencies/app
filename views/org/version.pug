@@ -21,7 +21,7 @@ block content
         tbody
           each dependant in dependants
             tr
-              td: a(href=`/${org}/repositories/${dependant.repository}`)= dependant.repository
+              td: a(href=`/${org}/repositories/${dependant.repo}`)= dependant.repo
               td.text-right= dependant.type
               td.text-right= dependant.version
 

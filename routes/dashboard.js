@@ -2,8 +2,8 @@ const { Router } = require('express')
 
 const db = require('../lib/db/installation')
 const log = require('../lib/log')
-const api = require('../lib/github/api')
-const install = require('../lib/install')
+const client = require('../lib/github')
+const scan = require('../lib/scan/org')
 
 const route = Router()
 
@@ -31,15 +31,28 @@ route.get('/', async function (req, res) {
 })
 
 route.get('/scan', async function (req, res) {
-  const octokit = await api.user(req.user.accessToken)
+  const github = await client.user(req.user.accessToken)
 
   // fetch installations for this user
-  const { data: { installations } } = await octokit.apps.listInstallationsForAuthenticatedUser() // TODO paginate
+  const { data: { installations } } = await github.apps.listInstallationsForAuthenticatedUser() // TODO paginate
 
   log.info('found %d:cyan installations', installations.length)
 
   // re-install user apps
-  installations.map(install)
+  for (const installation of installations) {
+    const data = [
+      installation.id,
+      installation.account.login,
+      installation.account.type,
+      installation.html_url
+    ]
+
+    // add installation
+    db.installation.add(...data)
+
+    // scan org
+    scan(installation.id, installation.account.login, installation.account.type)
+  }
 
   res.redirect('/dashboard')
 })
