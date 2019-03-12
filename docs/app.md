@@ -31,9 +31,10 @@ The full URL to redirect to after a user authorizes an installation.
 
 Use `https://your-app-domain` + `/auth/callback`
 
-> _e.g. `https://dependencies.my-company.com/auth/callback`_
+> _e.g. `https://dependencies.my-company.com/auth/callback`_   
+> _local development: `localhost:3000/auth/callback`_
 
-- **Related Environment Variable**: [`DEPENDENCIES_APP_LINK`](./environment.md/#DEPENDENCIES_APP_LINK)
+- **Related Environment Variable**: [`DEPENDENCIES_APP_LINK`](./environment.md#DEPENDENCIES_APP_LINK)
 
 #### Webhook URL
 
@@ -43,7 +44,7 @@ Use the root url of the app `https://your-app-domain`
 
 > _e.g. `https://dependencies.my-company.com/`_
 
-- **Related Environment Variable**: [`DEPENDENCIES_APP_LINK`](./environment.md/#DEPENDENCIES_APP_LINK)
+- **Related Environment Variable**: [`DEPENDENCIES_APP_LINK`](./environment.md#DEPENDENCIES_APP_LINK)
 
 ##### Webhook secret _(optional)_
 
@@ -51,7 +52,7 @@ While optional, this is recommended to ensure your Dependencies App data is secu
 
 > _e.g. `oopee2Ie-Noethoh0-eoS6xah4-yeemeu9U`_
 
-- **Related Environment Variable**: [`GITHUB_WEBHOOK_SECRET`](./environment.md/#GITHUB_WEBHOOK_SECRET)
+- **Related Environment Variable**: [`GITHUB_WEBHOOK_SECRET`](./environment.md#GITHUB_WEBHOOK_SECRET)
 
 ## Permissions
 
@@ -101,16 +102,16 @@ Once created, GitHub will generate a few key items you'll need to pass to Depend
 
 | name          | environment variable                                              |
 | ------------- | ----------------------------------------------------------------- |
-| App ID        | [`GITHUB_APP_ID`](./environment.md/#GITHUB_APP_ID)                |
-| Client ID     | [`GITHUB_CLIENT_ID`](./environment.md/#GITHUB_CLIENT_ID)          |
-| Client secret | [`GITHUB_CLIENT_SECRET`](./environment.md/#GITHUB_CLIENT_SECRET)  |
-| Public link   | [`GITHUB_APP_LINK`](./environment.md/#GITHUB_APP_LINK)            |
+| App ID        | [`GITHUB_APP_ID`](./environment.md#GITHUB_APP_ID)                |
+| Client ID     | [`GITHUB_CLIENT_ID`](./environment.md#GITHUB_CLIENT_ID)          |
+| Client secret | [`GITHUB_CLIENT_SECRET`](./environment.md#GITHUB_CLIENT_SECRET)  |
+| Public link   | [`GITHUB_APP_LINK`](./environment.md#GITHUB_APP_LINK)            |
 
 ### Generating a Private key
 
 You need a private key to sign access token requests to GitHub.
 
-Click _"Generate Private Key"_ and store the downloaded `.pem` file somewhere safe. You'll need to [use this for the app environment configuration](./environment.md/#GITHUB_PRIVATE_KEY)
+Click _"Generate Private Key"_ and store the downloaded `.pem` file somewhere safe. You'll need to [use this for the app environment configuration](./environment.md#GITHUB_PRIVATE_KEY)
 
 [creating-a-github-app]: https://developer.github.com/apps/building-github-apps/creating-a-github-app/ 
 [creating-github-apps-from-a-manifest]: https://developer.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/
