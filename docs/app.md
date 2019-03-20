@@ -33,7 +33,7 @@ Use `https://your-app-domain` + `/auth/callback`
 
 > _e.g. `https://dependencies.my-company.com/auth/callback`_
 
-- **Related Environment Variable**: [`DEPENDENCIES_APP_LINK`](./environment.md/#DEPENDENCIES_APP_LINK)
+- **Related Environment Variable**: [`DEPENDENCIES_WEBSITE_LINK`](./environment.md/#DEPENDENCIES_WEBSITE_LINK)
 
 #### Webhook URL
 
@@ -43,7 +43,7 @@ Use the root url of the app `https://your-app-domain`
 
 > _e.g. `https://dependencies.my-company.com/`_
 
-- **Related Environment Variable**: [`DEPENDENCIES_APP_LINK`](./environment.md/#DEPENDENCIES_APP_LINK)
+- **Related Environment Variable**: [`DEPENDENCIES_WEBSITE_LINK`](./environment.md/#DEPENDENCIES_WEBSITE_LINK)
 
 ##### Webhook secret _(optional)_
 

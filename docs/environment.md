@@ -45,29 +45,39 @@ awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' dependencies-app.2019-03-01.private
 
 Created by you when [Creating a GitHub App](app.md)
 
-## App Settings
+## Website Settings
 
-### `DEPENDENCIES_APP_LINK`
+### `DEPENDENCIES_WEBSITE_LINK`
 
 Domain where this service lives
 
-**NOTE**: this is primarily used for the GitHub user authentication redirect, and should reflect the public facing URL & port your users will use, this is used independently from the [`DEPENDENCIES_APP_PORT`](#DEPENDENCIES_APP_PORT) value.
+**NOTE**: this is primarily used for the GitHub user authentication redirect, and should reflect the public facing URL & port your users will use, this is used independently from the [`DEPENDENCIES_WEBSITE_PORT`](#DEPENDENCIES_WEBSITE_PORT) value.
 
 > _e.g. `https://dependencies.my-company.com`_
 
-### `DEPENDENCIES_APP_PORT`
+### `DEPENDENCIES_WEBSITE_PORT`
 
-Specifies the port we want to listen to. _(Defaults to `3000`)_
+Specifies the port we want to listen to. _(Defaults to `4000`)_
 
 **NOTE**: if you're using a PaaS environment that dynamically assigns `PORT` value, simply keep this value empty and Dependencies App will use `PORT` instead.
 
-> _e.g. `localhost:3000`_
+> _e.g. `4000`_
 
-### `DEPENDENCIES_APP_SESSION_SECRET`
+### `DEPENDENCIES_WEBSITE_SESSION_SECRET`
 
 Cookie Session secret
 
 > _e.g. `my-super-secret-cookie-secret`_
+
+## Workers Settings
+
+### `DEPENDENCIES_WORKERS_PORT`
+
+Specifies the port we want to listen to. _(Defaults to `4001`)_
+
+**NOTE**: if you're using a PaaS environment that dynamically assigns `PORT` value, simply keep this value empty and Dependencies App will use `PORT` instead.
+
+> _e.g. `4001`_
 
 ## Database config
 
@@ -91,16 +101,16 @@ The database server port
 
 The database name
 
-> _e.g. `DEPENDENCIES_APP_db`_
+> _e.g. `dependencies_db`_
 
 ### `POSTGRES_USER`
 
 The database user
 
-> _e.g. `DEPENDENCIES_APP_user`_
+> _e.g. `dependencies_user`_
 
 ### `POSTGRES_PASSWORD`
 
 The database user password
 
-> _e.g. `DEPENDENCIES_APP_user_password`_
+> _e.g. `dependencies_user_password`_

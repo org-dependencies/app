@@ -1,4 +1,4 @@
-const db = require('../db/dependency')
+const db = require('../../../lib/db/dependency')
 const log = require('../log')
 
 const parseJSON = (content) => {
@@ -9,13 +9,15 @@ const parseJSON = (content) => {
   }
 }
 
-module.exports = function (installation, match, content) {
+module.exports = async function (installation, match, content) {
   const data = parseJSON(content)
 
   if (!data) {
-    log.info('%s:blue parsing %s:cyan failed in %s:yellow/%s:yellow', installation, match.path, match.repository.owner.login, match.repository.name)
+    log.error('%s:blue parsing %s:cyan failed in %s:yellow/%s:yellow', installation, match.path, match.repository.owner.login, match.repository.name)
     return
   }
+
+  log.info('%s:blue parsing %s:cyan in %s:yellow/%s:yellow', installation, match.path, match.repository.owner.login, match.repository.name)
 
   const types = ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies']
 
@@ -30,6 +32,6 @@ module.exports = function (installation, match, content) {
     // construct packages object
     const packages = Object.entries(data[type]).map(([name, version]) => ({ name, version }))
 
-    db.add(installation, match.repository.id, ['npm', type, 'declared', match.path, source, JSON.stringify(packages)])
+    await db.add(installation, match.repository.id, ['npm', type, 'declared', match.path, source, JSON.stringify(packages)])
   }
 }

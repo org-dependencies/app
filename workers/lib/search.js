@@ -1,6 +1,6 @@
-const paginate = require('../retry-paginate')
+const paginate = require('./retry-paginate')
 const fetch = require('./fetch-content')
-const log = require('../log')
+const log = require('./log')
 const yaml = require('js-yaml')
 
 const filenames = [
@@ -41,6 +41,6 @@ module.exports = async function (installation, github, type, login, repo) {
 
     const options = github.search.code.endpoint.merge({ q, per_page: 100 })
 
-    paginate(github, options, ({ data: { items } }) => fetch(installation, github, settings, items))
+    await paginate(github, options, ({ data: { items } }) => fetch(installation, github, settings, items))
   }
 }

@@ -12,12 +12,13 @@ async function paginate (github, options, callback) {
 
       log.info('abuse block, retrying after %s:magenta seconds', retry)
 
-      setTimeout(() => {
-        log.info('retrying request %s:yellow', err.request.url)
+      // TODO schedule tasks
+      // setTimeout(() => {
+      //   log.info('retrying request %s:yellow', err.request.url)
 
-        // continue pagination from last step
-        paginate(github, err.request.url, callback)
-      }, retry * 1000)
+      //   // continue pagination from last step
+      //   paginate(github, err.request.url, callback)
+      // }, retry * 1000)
     } else {
       log.error('something went wrong: %s', err.message)
     }

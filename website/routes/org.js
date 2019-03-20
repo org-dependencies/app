@@ -1,7 +1,6 @@
 const { Router } = require('express')
 
-const db = require('../lib/db/')
-const scan = require('../lib/scan/')
+const db = require('../../lib/db/')
 const semver = require('semver')
 
 const route = Router({ mergeParams: true })
@@ -62,7 +61,7 @@ route.get('/repositories', async function (req, res) {
 route.get('/repositories/:name', async function (req, res) {
   const { name } = req.params
 
-  const { rows: [ repository ] } = await db.repository.get(req.installation.id, name)
+  const { rows: [ repository ] } = await db.repository.getByName(req.installation.id, name)
 
   if (!repository) {
     return res.render(`repository/404`, { name, installation: req.installation })
@@ -76,7 +75,8 @@ route.get('/repositories/:name', async function (req, res) {
 route.get('/repositories/:name/scan', async function (req, res) {
   const { name } = req.params
 
-  scan.repo(req.installation.id, name)
+  // TODO WORKERS
+  // scan.repo(req.installation.id, name)
 
   // TODO send to intermediary page
 
@@ -123,7 +123,8 @@ route.get('/dependencies/:name*', async function (req, res) {
 })
 
 route.get('/scan', async function (req, res) {
-  scan.org(req.installation.id, req.installation.name, req.user.accessToken)
+  // TODO WORKERS
+  // scan.org(req.installation.id, req.installation.name, req.user.accessToken)
 
   // TODO add intermediary page
 
@@ -174,7 +175,8 @@ route.get('/advisories', async function (req, res) {
 })
 
 route.get('/advisories/scan', async function (req, res) {
-  scan.advisories()
+  // TODO WORKERS
+  // scan.advisories()
 
   // TODO add intermediary page
 

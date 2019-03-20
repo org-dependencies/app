@@ -1,4 +1,4 @@
-const db = require('../db/dependency')
+const db = require('../../../lib/db/dependency')
 const log = require('../log')
 const semver = require('semver')
 const findVersions = require('find-versions')
@@ -11,15 +11,17 @@ const parseJSON = (content) => {
   }
 }
 
-module.exports = function (installation, match, content) {
+module.exports = async function (installation, match, content) {
   const data = parseJSON(content)
 
   if (!data) {
-    log.info('%s:blue parsing %s:cyan failed in %s:yellow/%s:yellow', installation, match.path, match.repository.owner.login, match.repository.name)
+    log.error('%s:blue parsing %s:cyan failed in %s:yellow/%s:yellow', installation, match.path, match.repository.owner.login, match.repository.name)
     return
   }
 
   if (!data.dependencies) return
+
+  log.info('%s:blue parsing %s:cyan in %s:yellow/%s:yellow', installation, match.path, match.repository.owner.login, match.repository.name)
 
   const packages = []
 
@@ -50,5 +52,5 @@ module.exports = function (installation, match, content) {
   // print friendly source
   const source = JSON.stringify(packages, null, 2)
 
-  db.add(installation, match.repository.id, ['npm', 'locked', 'resolved', match.path, source, JSON.stringify(packages)])
+  await db.add(installation, match.repository.id, ['npm', 'locked', 'resolved', match.path, source, JSON.stringify(packages)])
 }

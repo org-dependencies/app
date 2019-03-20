@@ -1,9 +1,8 @@
 const { Router } = require('express')
 
-const db = require('../lib/db/installation')
+const db = require('../../lib/db/installation')
 const log = require('../lib/log')
-const client = require('../lib/github')
-const scan = require('../lib/scan/org')
+const client = require('../../lib/github')
 
 const route = Router()
 
@@ -51,7 +50,8 @@ route.get('/scan', async function (req, res) {
     db.add(...data)
 
     // scan org
-    scan(installation.id, installation.account.login, installation.account.type === 'User' ? req.user.accessToken : null)
+    // TODO WORKERS
+    // scan(installation.id, installation.account.login, installation.account.type === 'User' ? req.user.accessToken : null)
   }
 
   res.redirect('/dashboard')

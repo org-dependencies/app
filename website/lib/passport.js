@@ -1,10 +1,10 @@
-const client = require('../lib/github')
+const client = require('../../lib/github')
 const passport = require('passport')
 const Strategy = require('passport-github').Strategy
 
-const pkg = require('../package.json')
+const pkg = require('../../package.json')
 
-const baseUrl = process.env.DEPENDENCIES_APP_LINK || `http://localhost:${process.env.DEPENDENCIES_APP_PORT || 3000}`
+const baseUrl = process.env.DEPENDENCIES_WEBSITE_LINK || `http://localhost:${process.env.DEPENDENCIES_WEBSITE_PORT || 4000}`
 
 const options = {
   clientID: process.env.GITHUB_CLIENT_ID,

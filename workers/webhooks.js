@@ -1,7 +1,7 @@
 const WebhooksApi = require('@octokit/webhooks')
-const db = require('../lib/db/')
-const log = require('../lib/log')
-const scan = require('../lib/scan/repo')
+const db = require('../lib/db')
+const log = require('./lib/log')
+// const scan = require('./lib/scan/repo')
 
 const webhooks = new WebhooksApi({ secret: process.env.GITHUB_WEBHOOK_SECRET })
 

@@ -6,6 +6,7 @@ CREATE TABLE installations
   name VARCHAR NOT NULL,
   type VARCHAR NOT NULL,
   url VARCHAR NOT NULL,
+  token JSONB NOT NULL,
   installed TIMESTAMP NOT NULL DEFAULT NOW()
 );
 

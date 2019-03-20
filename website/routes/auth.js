@@ -1,6 +1,6 @@
 const express = require('express')
 
-const client = require('../lib/github')
+const client = require('../../lib/github')
 const passport = require('../lib/passport')
 
 const route = express.Router()

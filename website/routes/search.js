@@ -1,6 +1,6 @@
 const { Router } = require('express')
 
-const db = require('../lib/db/search')
+const db = require('../../lib/db/search')
 
 const route = Router()
 

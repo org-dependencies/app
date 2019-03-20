@@ -1,6 +1,6 @@
-const log = require('../log')
-const parse = require('../parse/')
-const request = require('../retry-request')
+const log = require('./log')
+const parse = require('./parse')
+const request = require('./retry-request')
 const mm = require('micromatch')
 
 module.exports = async function (installation, github, settings, items) {
@@ -28,10 +28,11 @@ module.exports = async function (installation, github, settings, items) {
       }
     }
 
-    request(github, item.git_url, ({ data: { content } }) => {
-      log.info('%s:blue found %s:cyan in %s:yellow/%s:yellow', installation, item.path, item.repository.owner.login, item.repository.name)
+    await request(github, item.git_url)
+      .then(({ data: { content } }) => {
+        log.info('%s:blue found %s:cyan in %s:yellow/%s:yellow', installation, item.path, item.repository.owner.login, item.repository.name)
 
-      parse(installation, item, content)
-    })
+        parse(installation, item, content)
+      })
   }
 }

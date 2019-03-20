@@ -44,7 +44,7 @@
     "test": "tap test --100 --coverage-report=lcov --no-browser"
   },
   "dependencies": {
-    "@octokit/app": "^2.2.1",
+    "@octokit/app": "github:ahmadnassri/app.js",
     "@octokit/graphql": "^2.0.1",
     "@octokit/rest": "^16.17.0",
     "@octokit/webhooks": "^5.3.3",
@@ -67,7 +67,6 @@
     "pug": "^2.0.3",
     "semver": "^5.6.0",
     "tabler-ui": "0.0.32",
-    "uncaught-extender": "^1.0.1",
     "yargs": "^13.2.2"
   },
   "devDependencies": {
