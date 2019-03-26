@@ -27,8 +27,9 @@ day.extend(relativeTime)
 app.locals.day = day
 
 // configure app variables
-app.set('view engine', 'pug')
+app.set('view engine', 'jsx')
 app.set('views', join(__dirname, 'views'))
+app.engine('jsx', require('express-react-views').createEngine())
 
 // assign common middlewares
 // TODO add further performance middlewares
