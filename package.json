@@ -55,9 +55,10 @@
     "dayjs": "^1.8.10",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "express-react-views": "^0.11.0",
     "express-session": "^1.15.6",
     "find-versions": "^3.0.0",
-    "js-yaml": "^3.12.2",
+    "js-yaml": "^3.13.0",
     "micromatch": "^3.1.10",
     "oh-my-log": "^5.0.1",
     "parse-package-name": "^0.1.0",
@@ -65,12 +66,29 @@
     "passport-github": "^1.1.0",
     "pg": "^7.8.2",
     "pug": "^2.0.3",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-router": "^5.0.0",
     "semver": "^5.6.0",
+    "tabler-react": "^1.29.0",
     "tabler-ui": "0.0.32",
     "uncaught-extender": "^1.0.1",
     "yargs": "^13.2.2"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-standard": "^4.0.0",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4"
   }
 }
