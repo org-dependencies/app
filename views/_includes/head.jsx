@@ -14,5 +14,6 @@ module.exports = () => (
     <link href="/assets/site.webmanifest" rel="manifest" />
     <link color="#ffc40d" href="/assets/safari-pinned-tab.svg" rel="mask-icon" />
     <link href="/assets/favicon.ico" rel="shortcut icon" />
+    <link rel="stylesheet" href="https://unpkg.com/tabler-react@1.29.0/dist/Tabler.css" />
   </head>
 )
