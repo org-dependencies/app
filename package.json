@@ -58,7 +58,7 @@
     "express-session": "^1.15.6",
     "find-versions": "^3.0.0",
     "js-yaml": "^3.12.2",
-    "micromatch": "^3.1.10",
+    "micromatch": "^4.0.0",
     "oh-my-log": "^5.0.1",
     "parse-package-name": "^0.1.0",
     "passport": "^0.4.0",
