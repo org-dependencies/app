@@ -2,10 +2,10 @@ const React = require('react')
 const PropTypes = require('prop-types')
 
 const {
-  Page, Container, Site, Avatar, Button, Dropdown, Nav, Text
+  Page, Container, Site, Avatar, Dropdown, Nav, Text
 } = require('tabler-react')
 const Head = require('../_includes/head')
-const Logo = require('../layouts/logo')
+const Logo = require('./logo')
 
 const Session = ({ children, user = { avatar_url: '', name: 'No Name' } }) => (
   <html lang="en">
