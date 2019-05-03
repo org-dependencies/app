@@ -53,7 +53,7 @@
     "connect-pg-simple": "^5.0.0",
     "cookie-parser": "^1.4.4",
     "dayjs": "^1.8.10",
-    "dotenv": "^6.2.0",
+    "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "find-versions": "^3.0.0",
