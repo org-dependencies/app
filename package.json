@@ -50,7 +50,7 @@
     "@octokit/webhooks": "^5.3.3",
     "@yarnpkg/lockfile": "^1.1.0",
     "body-parser": "^1.18.3",
-    "connect-pg-simple": "^5.0.0",
+    "connect-pg-simple": "^6.0.1",
     "cookie-parser": "^1.4.4",
     "dayjs": "^1.8.10",
     "dotenv": "^6.2.0",
