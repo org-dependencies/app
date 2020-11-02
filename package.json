@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@octokit/app": "^2.2.1",
-    "@octokit/graphql": "^2.0.1",
+    "@octokit/graphql": "^4.5.7",
     "@octokit/rest": "^16.17.0",
     "@octokit/webhooks": "^5.3.3",
     "@yarnpkg/lockfile": "^1.1.0",
