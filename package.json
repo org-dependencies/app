@@ -44,7 +44,7 @@
     "test": "tap test --100 --coverage-report=lcov --no-browser"
   },
   "dependencies": {
-    "@octokit/app": "^2.2.1",
+    "@octokit/app": "^10.0.0",
     "@octokit/graphql": "^2.0.1",
     "@octokit/rest": "^16.17.0",
     "@octokit/webhooks": "^5.3.3",
