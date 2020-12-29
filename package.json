@@ -56,7 +56,7 @@
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "find-versions": "^3.0.0",
+    "find-versions": "^4.0.0",
     "js-yaml": "^3.12.2",
     "micromatch": "^3.1.10",
     "oh-my-log": "^5.0.1",
